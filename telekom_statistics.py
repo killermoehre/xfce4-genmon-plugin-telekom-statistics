@@ -21,7 +21,7 @@ def generate_text() -> str:
         connected = False
         api_answer["icon"] = "network-wireless-disconnected"
         api_answer["availableVolumePercent"] = 0
-        api_answer["initialVolume"] = 1
+        api_answer["initialVolume"] = 0
         api_answer["usedVolume"] = 0
     # convert the nested dict to an object
     api_answer["initialVolumeShort"] = api_answer["initialVolume"] / 1024**3
@@ -29,9 +29,12 @@ def generate_text() -> str:
     api_answer["remainingVolumeShort"] = (
         api_answer["initialVolume"] - api_answer["usedVolume"]
     ) / 1024**3
-    api_answer["availableVolumePercent"] = (
-        1 - api_answer["usedVolume"] / api_answer["initialVolume"]
-    ) * 100
+    try:
+        api_answer["availableVolumePercent"] = (
+            1 - api_answer["usedVolume"] / api_answer["initialVolume"]
+        ) * 100
+    except ZeroDivisionError:
+        api_answer["availableVolumePercent"] = 0
 
     api_answer["icon"] = "network-wireless-connected-00"
     api_answer["colour"] = "red"
