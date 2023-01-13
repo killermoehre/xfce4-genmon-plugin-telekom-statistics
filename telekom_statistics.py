@@ -38,15 +38,16 @@ def generate_text() -> str:
 
     api_answer["icon"] = "network-wireless-connected-00"
     api_answer["colour"] = "red"
-    if api_answer["availableVolumePercent"] >= 25:
-        api_answer["icon"] = "network-wireless-connected-25"
-        api_answer["colour"] = "orange"
-    if api_answer["availableVolumePercent"] >= 50:
-        api_answer["icon"] = "network-wireless-connected-50"
-        api_answer["colour"] = "yellow"
-    if api_answer["availableVolumePercent"] >= 75:
-        api_answer["icon"] = "network-wireless-connected-75"
-        api_answer["colour"] = "green"
+    if connected:
+        if api_answer["availableVolumePercent"] >= 25:
+            api_answer["icon"] = "network-wireless-connected-25"
+            api_answer["colour"] = "orange"
+        if api_answer["availableVolumePercent"] >= 50:
+            api_answer["icon"] = "network-wireless-connected-50"
+            api_answer["colour"] = "yellow"
+        if api_answer["availableVolumePercent"] >= 75:
+            api_answer["icon"] = "network-wireless-connected-75"
+            api_answer["colour"] = "green"
 
     return_string: str = "<txt>Telekom</txt>"
     return_string += f"<txtclick>exo-open {PASS_HOST}</txtclick>"
