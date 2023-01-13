@@ -50,9 +50,9 @@ def generate_text() -> str:
             api_answer["colour"] = "green"
 
     return_string: str = "<txt>Telekom</txt>"
-    return_string += f"<txtclick>exo-open --launch WebBrowser{PASS_HOST}</txtclick>"
+    return_string += f"<txtclick>exo-open --launch WebBrowser {PASS_HOST}</txtclick>"
     return_string += f"<icon>{api_answer['icon']}</icon>"
-    return_string += f"<iconclick>exo-open {PASS_HOST}</iconclick>"
+    return_string += f"<iconclick>exo-open --launch WebBrowser {PASS_HOST}</iconclick>"
     return_string += f"<bar>{api_answer['availableVolumePercent']}</bar>"
     return_string += "<tool>"
     if connected:
