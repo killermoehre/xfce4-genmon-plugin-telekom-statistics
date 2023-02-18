@@ -42,10 +42,10 @@ def generate_text() -> str:
     else:
         api_answer[
             "initialVolumeShort"
-        ] = f'{api_answer["initialVolume"] / 1024**3}:.2f'
+        ] = f'{api_answer["initialVolume"] / 1024**3:.2f}'
         api_answer[
             "remainingVolumeShort"
-        ] = f'{(api_answer["initialVolume"] - api_answer["usedVolume"]) / 1024**3}:.2f'
+        ] = f'{(api_answer["initialVolume"] - api_answer["usedVolume"]) / 1024**3:.2f}'
 
     api_answer["icon"] = "network-wireless-connected-00"
     api_answer["colour"] = "red"
